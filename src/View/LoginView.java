@@ -9,6 +9,7 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 
 import Control.ControleLogin;
+import Control.ControleAula;
 import XML.TurmaLogin;
 import XML.UsuarioLogin;
 
@@ -16,6 +17,7 @@ import XML.UsuarioLogin;
 public class LoginView {
 
 	ControleLogin controleLogin = new ControleLogin();
+	ControleAula controleAula = new ControleAula(); 
 
 	@GET
 	@Path("/usuario/{usuario}/senha/{senha}")
@@ -29,7 +31,7 @@ public class LoginView {
 	@Path("turma/usuario/{usuario}/tipo/{tipo}")
 	@Produces(MediaType.APPLICATION_XML)
 	public List<TurmaLogin> getTurma(@PathParam("usuario") String nameUsuario, @PathParam("tipo") String tipo) {
-		return controleLogin.getTurmas(nameUsuario, tipo);
+		return controleAula.getTurmas(nameUsuario, tipo);
 	}
 
 }

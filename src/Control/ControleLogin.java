@@ -34,33 +34,5 @@ public class ControleLogin {
 		return usuarioLogin;
 	}
 
-	public List<TurmaLogin> getTurmas(String nomeUsuario, String tipo) {
-		List<TurmaLogin> turmasLogin = new ArrayList<TurmaLogin>();
-		TurmaLogin turmaLogin;
-
-		if (tipo.equals("Aluno")) {
-			List<Turma> turmas = loginDAO.getTurmasAluno(nomeUsuario);
-
-			for (Turma turma : turmas) {
-				turmaLogin = new TurmaLogin();
-				turmaLogin.setIdTurma(turma.getId());
-				turmaLogin.setNomeDisciplina(turma.getDisciplina().getNome());
-				turmaLogin.setChamadaAberta(turma.getChamadaAberta());
-				turmasLogin.add(turmaLogin);
-			}
-		} else if (tipo.equals("Professor")) {
-			List<Turma> turmas = loginDAO.getTurmasProfessor(nomeUsuario);
-
-			for (Turma turma : turmas) {
-				turmaLogin = new TurmaLogin();
-				turmaLogin.setIdTurma(turma.getId());
-				turmaLogin.setNomeDisciplina(turma.getDisciplina().getNome());
-				turmaLogin.setChamadaAberta(turma.getChamadaAberta());
-				turmasLogin.add(turmaLogin);
-			}
-		}
-
-		return turmasLogin;
-	}
 
 }
